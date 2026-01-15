@@ -1,1 +1,27 @@
+import java.util.Scanner;
+
+public class StrengthChecker {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        boolean isStrong = false;
+
+        while (!isStrong) {
+            System.out.print("Enter password: ");
+            String pass = input.nextLine();
+
+            boolean hasUpper = !pass.equals(pass.toLowerCase());
+            boolean hasSpecial = pass.matches(".*[!@#$%^&*].*");
+
+            if (pass.length() >= 8 && hasUpper && hasSpecial) {
+                System.out.println("Strength: Strong");
+                isStrong = true;
+            } else {
+                System.out.println("Strength: Weak - Password must be at least 8 characters, contain an uppercase letter, and a special character.");
+                System.out.println("Please try again.");
+            }
+        }
+
+        input.close();
+    }
+}
 
